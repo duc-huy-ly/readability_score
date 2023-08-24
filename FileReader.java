@@ -17,7 +17,6 @@ public class FileReader {
     private float SMOG;
     private float CL;
 
-
     public float getFK() {
         return FK;
     }
@@ -32,6 +31,18 @@ public class FileReader {
 
     public float getARI() {
         return ARI;
+    }
+        public void start() {
+        getTextFromFile();
+        extractWordsFromText();
+        extractSentencesFromText();
+        searchSyllables();
+        extractNumberOfCharactersFromText();
+        extractNumberOfPolysyllables();
+        calculateAri();
+        calculateCL();
+        calculateFK();
+        calculateSMOG();
     }
 
     private void calculateAri() {
@@ -66,18 +77,7 @@ public class FileReader {
         numberOfSyllables = 0;
         numberOfPolysyllables = 0;
     }
-    public void start() {
-        getTextFromFile();
-        extractWordsFromText();
-        extractSentencesFromText();
-        searchSyllables();
-        extractNumberOfCharactersFromText();
-        extractNumberOfPolysyllables();
-        calculateAri();
-        calculateCL();
-        calculateFK();
-        calculateSMOG();
-    }
+
     private void getTextFromFile() {
         try {
             text = readFileAsString(fileName);

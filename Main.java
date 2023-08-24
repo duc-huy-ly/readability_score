@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        FileReader fileReader= new FileReader(args[0]);
+        FileReader fileReader = new FileReader(args[0]);
         fileReader.start();
         fileReader.displayInfo();
         System.out.println("Enter the score you want to calculate (ARI, FK, SMOG, CL, all): ");
@@ -27,15 +27,14 @@ public class Main {
                 printFK(fileReader);
                 printSMOG(fileReader);
                 printCL(fileReader);
-                float average = (float)(AgesTable.getAgeByScore(fileReader.getARI()) + AgesTable.getAgeByScore(fileReader.getCL()) +
-                        AgesTable.getAgeByScore(fileReader.getSMOG()) + AgesTable.getAgeByScore(fileReader.getFK()))/4;
+                float average = (float) (AgesTable.getAgeByScore(fileReader.getARI()) + AgesTable.getAgeByScore(fileReader.getCL()) +
+                        AgesTable.getAgeByScore(fileReader.getSMOG()) + AgesTable.getAgeByScore(fileReader.getFK())) / 4;
                 System.out.printf("This text should be understood by average by %.2f-year-olds.\n", average);
             }
             default -> System.out.println("Error, input not ok.");
         }
 
     }
-
 
     private static void printCL(FileReader fileReader) {
         System.out.printf("Coleman–Liau index: %.2f ", fileReader.getCL());
@@ -60,38 +59,4 @@ public class Main {
     private static void getAgeGroup(float score) {
         System.out.printf("(about %d-year-olds).\n", AgesTable.getAgeByScore(score));
     }
-
-
-//
-
-//
-//        try {
-//            String textFromFile = readFileAsString(args[0]);
-//            String[] sentences = textFromFile.split("[.?!]");
-//            String[] words = textFromFile.split("\\s+");
-//            String[] characters = textFromFile.split("");
-//            String[] syllables = textFromFile.split("[^aeuyioAEUYIO]+");
-//            int characterCount = 0;
-//            for (String element :
-//                    characters) {
-//                if (!element.equals(" ")) {
-//                    characterCount++;
-//                }
-//            }
-//            float readabilityScore = (float) ((4.71 * characterCount / words.length )+ (0.5 * words.length / sentences.length) - 21.43);
-//
-//            System.out.println("The text is:");
-//            System.out.println(textFromFile);
-//            System.out.println();
-//            System.out.println("Words: " + words.length);
-//            System.out.println("Sentences: " + sentences.length);
-//            System.out.println("Characters: " + characterCount);
-//            System.out.printf("The score is: %.2f\n", readabilityScore);
-//            double ceiledScore = Math.ceil((double) readabilityScore);
-//            System.out.printf("This text should be understood by %s year-olds.\n", ageLevel[(int)ceiledScore - 1]);
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
-
 }

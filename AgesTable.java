@@ -2,7 +2,6 @@ package readability;
 
 import java.util.Arrays;
 
-
 public enum AgesTable {
     GROUP_ONE("5-6", 1,6),
     GROUP_TWO("6-7", 2,7),
